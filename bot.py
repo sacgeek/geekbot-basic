@@ -53,15 +53,15 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='!', intents=intents)
 # bot commands aren't working:
-@bot.command(name='ping')
-async def ping(ctx):
-    await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
-
-
-@bot.command()
-async def test(ctx, arg):
-    pass
-    await ctx.send(arg)
+# @bot.command(name='ping')
+# async def ping(ctx):
+#     await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
+#
+#
+# @bot.command()
+# async def test(ctx, arg):
+#     pass
+#     await ctx.send(arg)
 ####################################################
 # client commands are working:
 # Client on_ready connect to Discord:
@@ -84,7 +84,11 @@ async def on_message(message):
 
 @bot.command()
 async def react(ctx):
-    #def check(reaction, user):  # Our check for the reaction
+    def check(reaction, user):  # Our check for the reaction
+        return user == ctx.message.author  # We check that only the authors reaction counts
+
+    await ctx.send("Please react to the message!")  # Message to react to
+
     reaction = await bot.wait_for("reaction_add", check=check)  # Wait for a reaction
     await ctx.send(f"You reacted with: {reaction[0]}")  # With [0] we only display the emoji
 
