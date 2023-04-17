@@ -61,7 +61,7 @@ bot = commands.Bot(command_prefix='$', intents=intents)
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
+    await ctx.send(f"Pong! {round(bot.latency * 1000)}ms")
 
 
 @bot.command()
