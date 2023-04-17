@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # bot commands aren't working:
 @bot.command(name='ping')
 async def ping(ctx):
-    await ctx.send("Pong! " +str(round(client.latency * 1000))+"ms")
+    await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
 
 
 @bot.command()
@@ -41,6 +41,8 @@ async def on_message(message):
 
     if message.content.startswith('hi'):
         await message.channel.send('Hello!')
+
+    #if message.content.
 
 # run the bot:
 client.run(TOKEN)
