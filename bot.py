@@ -82,6 +82,9 @@ async def on_message(message):
     if message.content.startswith('hi'):
         await message.channel.send('Hello!')
 
+@bot.command()
+async def react(ctx):
+    #def check(reaction, user):  # Our check for the reaction
     reaction = await bot.wait_for("reaction_add", check=check)  # Wait for a reaction
     await ctx.send(f"You reacted with: {reaction[0]}")  # With [0] we only display the emoji
 
