@@ -3,6 +3,46 @@ import discord
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 
+
+def get_language_code(flag_emoji):
+    # Mapping of flag emojis to language codes
+    flag_to_lang = {
+        '🇺🇸': 'EN',  # English
+        '🇪🇸': 'ES',  # Spanish
+        '🇫🇷': 'FR',  # French
+        '🇩🇪': 'DE',  # German
+        '🇮🇹': 'IT',  # Italian
+        '🇵🇹': 'PT',  # Portuguese
+        '🇳🇱': 'NL',  # Dutch
+        '🇸🇪': 'SV',  # Swedish
+        '🇩🇰': 'DA',  # Danish
+        '🇳🇴': 'NO',  # Norwegian
+        '🇫🇮': 'FI',  # Finnish
+        '🇷🇺': 'RU',  # Russian
+        '🇨🇳': 'ZH',  # Chinese
+        '🇯🇵': 'JA',  # Japanese
+        '🇰🇷': 'KO',  # Korean
+    }
+    return flag_to_lang.get(flag_emoji)
+
+flag_to_lang = {
+        '🇺🇸': 'EN',  # English
+        '🇪🇸': 'ES',  # Spanish
+        '🇫🇷': 'FR',  # French
+        '🇩🇪': 'DE',  # German
+        '🇮🇹': 'IT',  # Italian
+        '🇵🇹': 'PT',  # Portuguese
+        '🇳🇱': 'NL',  # Dutch
+        '🇸🇪': 'SV',  # Swedish
+        '🇩🇰': 'DA',  # Danish
+        '🇳🇴': 'NO',  # Norwegian
+        '🇫🇮': 'FI',  # Finnish
+        '🇷🇺': 'RU',  # Russian
+        '🇨🇳': 'ZH',  # Chinese
+        '🇯🇵': 'JA',  # Japanese
+        '🇰🇷': 'KO',  # Korean
+    }
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
@@ -42,7 +82,11 @@ async def on_message(message):
     if message.content.startswith('hi'):
         await message.channel.send('Hello!')
 
-    #if message.content.
+    if message.content.split()[1] in flag_to_lang:
+        flag_emoji = message.content.split()[1]
+        target_lang = get_language_code(flag_emoji)
+        response = f"You want to translate to: {target_lang}"
+        await message.channel.send(response)
 
 # run the bot:
 client.run(TOKEN)
