@@ -49,6 +49,10 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
+intents.reactions = True
+intents.messages = True
+intents.emojis = True
 
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='!', intents=intents)
