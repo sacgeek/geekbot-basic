@@ -54,18 +54,18 @@ intents.reactions = True
 intents.messages = True
 intents.emojis = True
 
+
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix='$', intents=intents)
 # bot commands aren't working:
 # @bot.command(name='ping')
 # async def ping(ctx):
 #     await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
 #
 #
-# @bot.command()
-# async def test(ctx, arg):
-#     pass
-#     await ctx.send(arg)
+@bot.command()
+async def test(ctx, arg):
+    await ctx.send(arg)
 ####################################################
 # client commands are working:
 # Client on_ready connect to Discord:
