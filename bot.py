@@ -29,7 +29,7 @@ flag_to_lang = {
         '🇺🇸': 'EN',  # English
         '🇪🇸': 'ES',  # Spanish
         '🇫🇷': 'FR',  # French
-        '🇩🇪': 'DE',  # German
+        ':flag_de:': 'German',  # German
         '🇮🇹': 'IT',  # Italian
         '🇵🇹': 'PT',  # Portuguese
         '🇳🇱': 'NL',  # Dutch
