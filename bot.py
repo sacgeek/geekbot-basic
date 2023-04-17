@@ -58,7 +58,8 @@ intents.emojis = True
 #client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='$', intents=intents)
 
-@bot.command(name='ping')
+
+@bot.command()
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency * 1000)}ms")
 
@@ -69,6 +70,8 @@ async def test(ctx, arg):
 ####################################################
 # client commands are working:
 # Client on_ready connect to Discord:
+
+
 @bot.event
 async def on_ready():
     for guild in client.guilds:
@@ -78,15 +81,16 @@ async def on_ready():
     print(f'{guild.name}(id: {guild.id})')
 
 # Very basic hi/hello on_message event:
-@bot.event
-async def on_message(message):
+#@bot.event
+#async def on_message(message):
     # if message.author == client.user:
     #     return
     #
     # if message.content.startswith('hi'):
     #     await message.channel.send('Hello!')
 
-    await bot.process_commands(message)
+    #await bot.process_commands(message)
+
 
 @bot.command()
 async def react(ctx):
