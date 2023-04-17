@@ -82,11 +82,14 @@ async def on_message(message):
     if message.content.startswith('hi'):
         await message.channel.send('Hello!')
 
-    if message.content.split()[1] in flag_to_lang:
-        flag_emoji = message.content.split()[1]
-        target_lang = get_language_code(flag_emoji)
-        response = f"You want to translate to: {target_lang}"
-        await message.channel.send(response)
+    reaction = await bot.wait_for("reaction_add", check=check)  # Wait for a reaction
+    await ctx.send(f"You reacted with: {reaction[0]}")  # With [0] we only display the emoji
+
+    # if message.content.split()[1] in flag_to_lang:
+    #     flag_emoji = message.content.split()[1]
+    #     target_lang = get_language_code(flag_emoji)
+    #     response = f"You want to translate to: {target_lang}"
+    #     await message.channel.send(response)
 
 # run the bot:
 client.run(TOKEN)
