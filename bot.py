@@ -74,10 +74,10 @@ async def test(ctx, arg):
 
 @bot.event
 async def on_ready():
-    for guild in client.guilds:
+    for guild in bot.guilds:
         if guild.name == GUILD:
             break
-    print(f'{client.user} has connected to Discord!')
+    print(f'{bot.user} has connected to Discord!')
     print(f'{guild.name}(id: {guild.id})')
 
 # Very basic hi/hello on_message event:
