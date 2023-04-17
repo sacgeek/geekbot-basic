@@ -29,7 +29,7 @@ flag_to_lang = {
         '🇺🇸': 'EN',  # English
         '🇪🇸': 'ES',  # Spanish
         '🇫🇷': 'FR',  # French
-        ':flag_de:': 'German',  # German
+        '🇩🇪': 'DE',  # German
         '🇮🇹': 'IT',  # Italian
         '🇵🇹': 'PT',  # Portuguese
         '🇳🇱': 'NL',  # Dutch
@@ -103,11 +103,10 @@ async def react(ctx):
     await ctx.send(f"You reacted with: {reaction[0]}")  # With [0] we only display the emoji
     print(reaction[0])
 
-    # if message.content.split()[1] in flag_to_lang:
-    #     flag_emoji = message.content.split()[1]
-    #     target_lang = get_language_code(flag_emoji)
-    #     response = f"You want to translate to: {target_lang}"
-    #     await message.channel.send(response)
+    if reaction in flag_to_lang:
+        target_lang = flag_to_lang[reaction]
+        response = f"You want to translate to: {target_lang}"
+        await ctx.send(response)
 
 # run the bot:
 bot.run(TOKEN)
