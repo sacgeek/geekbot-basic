@@ -102,9 +102,9 @@ async def react(ctx):
     reaction = await bot.wait_for("reaction_add", check=check)  # Wait for a reaction
     await ctx.send(f"You reacted with: {reaction[0]}")  # With [0] we only display the emoji
     print(reaction[0])
-
-    if reaction[0] in flag_to_lang:
-        target_lang = flag_to_lang[reaction[0]]
+    myreact = str(reaction[0])
+    if myreact in flag_to_lang:
+        target_lang = flag_to_lang[myreact]
         response = f"You want to translate to: {target_lang}"
         print("If triggered.")
         await ctx.send(response)
